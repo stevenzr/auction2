@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'sparkpost'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.sparkpostmail.com'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,10 +55,7 @@ return [
     |
     */
 
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'sparkpost@sander.borret.mtantwerp.eu'),
-        'name' => env('MAIL_FROM_NAME', 'Landoretti ART'),
-    ],
+    'from' => ['address' =>'steven@crubiks.com','name' => 'Contact Recieved'],
 
     /*
     |--------------------------------------------------------------------------

@@ -31,42 +31,23 @@ class AuctionController extends Controller
         $formattedEndDate = $endDate->format('Y-m-d');
         $imageQuality = 60;
 
-        if($request->artwork_image->isValid() && $request->signature_image->isValid()) {
+        if($request->artwork_image->isValid() ) {
             $artworkImagePath = 'storage/uploads/artwork_images/' . $request->artwork_image->hashName();
-            $signatureImagePath = 'storage/uploads/signature_images/' . $request->signature_image->hashName();
-
+           
             Image::make($request->artwork_image)->save($artworkImagePath, $imageQuality);
-            Image::make($request->signature_image)->save($signatureImagePath, $imageQuality);
         }
         else {
             return redirect()->back();
-        }
-
-
-        if($request->optional_image && $request->optional_image->isValid()) {
-            $optionalImagePath = 'storage/uploads/optional_images/' . $request->optional_image->hashName();
-
-            Image::make($request->optional_image)->save($optionalImagePath, $imageQuality);
         }
 
         Auction::create([
             'user_id' => Auth::id(),
             'style' => $request->style,
             'title' => $request->title,
-            'year' => $request->year,
-            'width' => $request->width,
-            'height' => $request->height,
-            'depth' => $request->depth,
             'description' => $request->description,
-            'condition' => $request->condition,
-            'origin' => $request->origin,
-            'artist' => $request->artist,
             'artwork_image_path' => $artworkImagePath,
-            'signature_image_path' => $signatureImagePath,
-            'optional_image_path' => $optionalImagePath,
             'min_price' => $request->min_price,
             'max_price' => $request->max_price,
-            'buyout_price' => $request->buyout_price,
             'end_date' => $formattedEndDate,
         ]);
 

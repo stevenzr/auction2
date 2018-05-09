@@ -17,13 +17,13 @@
         <div class="row">
             <div class="row-item full">
                 {!! Form::label('password', trans('register.password')) !!}
-                {!! Form::password('password', '', ['class' => $errors->has('password') ? 'has-error' : '', 'minlength' => 6]) !!}
+                {!! Form::password('password', ['class' => $errors->has('password') ? 'has-error' : '', 'minlength' => 6]) !!}
             </div>
         </div>
         <div class="row">
             <div class="row-item full">
                 {!! Form::label('password_confirmation', trans('register.password_confirmation')) !!}
-                {!! Form::password('password_confirmation', '', ['class' => $errors->has('password_confirmation') ? 'has-error' : '', 'minlength' => 6]) !!}
+                {!! Form::password('password_confirmation',  ['class' => $errors->has('password_confirmation') ? 'has-error' : '', 'minlength' => 6]) !!}
             </div>
         </div>
         <div class="row">

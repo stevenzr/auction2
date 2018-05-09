@@ -53,15 +53,10 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required|string|min:6',
-            'country' => ['required', Rule::in(array_keys(trans('register.countries')))],
             'zip' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'address' => 'required|string|max:255',
-            'calling_code' => ['required', Rule::in(array_keys(trans('register.calling_codes')))],
             'phone_number' => 'required|string|max:255',
-            'account_number' => 'required|string|max:255',
-            'vat_number' => 'required|string|max:255',
-            'alt_payment' => 'required|string|max:255',
             'agree_tac' => 'accepted',
         ]);
     }
@@ -74,18 +69,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'country' => $data['country'],
             'zip' => $data['zip'],
             'city' => $data['city'],
             'address' => $data['address'],
-            'phone_number' => '+' . $data['calling_code'] . $data['phone_number'],
-            'account_number' => $data['account_number'],
-            'vat_number' => $data['vat_number'],
-            'alt_payment' => $data['alt_payment'],
+            'phone_number' => $data['phone_number'],
+            
         ]);
+
+         Mail::to($data['email'])->send(new WelcomeMail($user));
+
+
+            return $user;
     }
 }

@@ -37,7 +37,7 @@
             <div class="side">
                 <div class="border-bottom">
                     <h2>{{ $auction->title }}</h2>
-                    <p>{{ $auction->year }}, {{ $auction->artist }}</p>
+                    <p>{{ $auction->year }}</p>
                 </div>
                 @if($auction->status == 'active')
                     <div class="border-bottom">
@@ -100,16 +100,9 @@
             <div class="auction-texts">
                 <h3>@lang('auction_detail.description')</h3>
                 <p>{{ $auction->description }}</p>
-                <h3>@lang('auction_detail.condition')</h3>
-                <p>{{ $auction->condition }}</p>
+
             </div>
-            <div class="auction-extra">
-                <h3>@lang('auction_detail.artist')</h3>
-                <p>{{ $auction->artist }}</p>
-                <h3>@lang('auction_detail.dimensions')</h3>
-                <p>{{ $auction->width }} x {{ $auction->height }} {{ $auction->depth ? 'x ' . $auction->depth : '' }} cm</p>
-                <a href="#" class="big-button">@lang('auction_detail.ask_a_question')</a>
-            </div>
+
         </div>
     </div>
     @include('partials.scripts.remaining_time')

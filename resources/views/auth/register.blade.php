@@ -27,11 +27,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="row-item">
-            {!! Form::label('country', trans('register.country')) !!}
-            {!! Form::select('country', trans('register.countries'), array_keys(trans('register.countries'))[0], ['class' => $errors->has('country') ? 'has-error' : '']) !!}
-        </div>
-        <div class="row-item half">
             <div class="row-item">
                 {!! Form::label('zip', trans('register.zip')) !!}
                 {!! Form::text('zip', '', ['class' => $errors->has('zip') ? 'has-error' : '', 'maxlength' => 255]) !!}
@@ -40,7 +35,7 @@
                 {!! Form::label('city', trans('register.city')) !!}
                 {!! Form::text('city', '', ['class' => $errors->has('city') ? 'has-error' : '', 'maxlength' => 255]) !!}
             </div>
-        </div>
+        
     </div>
     <div class="row">
         <div class="row-item">
@@ -48,31 +43,15 @@
             {!! Form::text('address', '', ['class' => $errors->has('address') ? 'has-error' : '', 'maxlength' => 255]) !!}
         </div>
         <div class="row-item half">
-            <div class="row-item third">
-                {!! Form::label('phone_number', trans('register.phone_number')) !!}
-                {!! Form::select('calling_code', trans('register.calling_codes'), array_keys(trans('register.calling_codes'))[0], ['class' => $errors->has('calling_code') ? 'has-error' : '']) !!}
-            </div>
+
             <div class="row-item two-third">
+                {!! Form::label('phone_number', trans('register.phone_number')) !!}
                 {!! Form::text('phone_number', '', ['class' => $errors->has('phone_number') ? 'has-error' : '', 'maxlength' => 255]) !!}
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="row-item">
-            {!! Form::label('account_number', trans('register.account_number')) !!}
-            {!! Form::text('account_number', '', ['class' => $errors->has('account_number') ? 'has-error' : '', 'maxlength' => 255]) !!}
-        </div>
-        <div class="row-item">
-            {!! Form::label('vat_number', trans('register.vat_number')) !!}
-            {!! Form::text('vat_number', '', ['class' => $errors->has('vat_number') ? 'has-error' : '', 'maxlength' => 255]) !!}
-        </div>
-    </div>
-    <div class="row">
-        <div class="row-item full">
-            {!! Form::label('alt_payment', trans('register.alt_payment')) !!}
-            {!! Form::text('alt_payment', '', ['class' => $errors->has('alt_payment') ? 'has-error' : '', 'maxlength' => 255]) !!}
-        </div>
-    </div>
+    
+    
     @include('partials.agree_tac')
     <div class="row">
         <div class="row-item">

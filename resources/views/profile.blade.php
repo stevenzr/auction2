@@ -5,7 +5,7 @@
 @section('content')
     <h1>@lang('profile.profile')</h1>
     <div class="profile-info">
-        <h2>{{ $user->name }}</h2>
+        <h2>User Name: {{ $user->name }}</h2>
         <div class="profile-info-col">
             <div class="item">
                 <p>
@@ -17,19 +17,13 @@
                     <span>{{ $user->phone_number }}</span>
                 </p>
             </div>
-            <div class="item">
-                <p>{{ $user->address }}</p>
-                <p>{{ $user->zip }}, {{ $user->city }}</p>
-            </div>
+
         </div>
         <div class="profile-info-col">
             <div class="item">
-                <p class="sub-title">@lang('register.vat_number')</p>
-                <p>{{ $user->vat_number }}</p>
-            </div>
-            <div class="item">
-                <p class="sub-title">@lang('register.account_number')</p>
-                <p>{{ $user->account_number }}</p>
+                <p>Address: {{ $user->address }}</p>
+                <p>Zip code:{{ $user->zip }}</p>
+                <p>City: {{ $user->city }}</p>
             </div>
         </div>
     </div>
