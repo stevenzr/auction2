@@ -26,7 +26,7 @@ return [
     ],
     'upload_texts' => [
         'artwork' => 'UPLOAD IMAGE OF THE ARTWORK',
-        
+
     ],
     'pricing' => 'Pricing',
     'min_price' => 'Minimum estimate price',

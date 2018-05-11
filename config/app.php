@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Landoretti ART'),
+    'name' => env('APP_NAME', 'Auction_Thesis'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://auction-thesis.herokuapp.com/'),
+    'url' => env('APP_URL', 'auction-thesis.herokuapp.com/'),
 
     /*
     |--------------------------------------------------------------------------
