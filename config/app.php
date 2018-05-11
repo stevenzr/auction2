@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://landoretti.sander.borret.mtantwerp.eu'),
+    'url' => env('APP_URL', 'http://auction-thesis.herokuapp.com/'),
 
     /*
     |--------------------------------------------------------------------------
