@@ -26,8 +26,7 @@ return [
     ],
     'upload_texts' => [
         'artwork' => 'UPLOAD IMAGE OF THE ARTWORK',
-        'signature' => 'UPLOAD IMAGE OF THE SIGNATURE',
-        'optional' => 'OPTIONAL IMAGE',
+        
     ],
     'pricing' => 'Pricing',
     'min_price' => 'Minimum estimate price',
