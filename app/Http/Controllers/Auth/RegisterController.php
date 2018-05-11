@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Validation\Rule;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -77,7 +79,7 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'address' => $data['address'],
             'phone_number' => $data['phone_number'],
-            
+
         ]);
 
          Mail::to($data['email'])->send(new WelcomeMail($user));
