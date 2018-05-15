@@ -28,7 +28,7 @@ class AddAuction extends FormRequest
             'style' => ['required', Rule::in(array_keys(trans('footer.styles')))],
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:10000',
-            'artwork_image' => 'required|image|max:10000',
+            'artwork_image' => 'nullable|image|max:10000',
             'min_price' => 'required|digits_between:1,8',
             'max_price' => 'required|digits_between:1,8',
             'end_date' => 'required|date_format:d/m/y|after:today|max:8',

@@ -31,21 +31,13 @@ class AuctionController extends Controller
         $formattedEndDate = $endDate->format('Y-m-d');
         $imageQuality = 60;
 
-        if($request->artwork_image->isValid() ) {
-            $artworkImagePath = 'storage/uploads/artwork_images/' . $request->artwork_image->hashName();
-           
-            Image::make($request->artwork_image)->save($artworkImagePath, $imageQuality);
-        }
-        else {
-            return redirect()->back();
-        }
 
         Auction::create([
             'user_id' => Auth::id(),
             'style' => $request->style,
             'title' => $request->title,
             'description' => $request->description,
-            'artwork_image_path' => $artworkImagePath,
+
             'min_price' => $request->min_price,
             'max_price' => $request->max_price,
             'end_date' => $formattedEndDate,
