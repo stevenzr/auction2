@@ -4,7 +4,7 @@ return [
 
     'new_auction' => 'New auction',
     'add_new_auction' => 'Add a new auction',
-    'style' => 'Style',
+    'category' => 'Category',
     'title' => 'Auction title',
     'year' => 'Year',
     'width' => 'Width',

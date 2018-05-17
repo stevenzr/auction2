@@ -27,9 +27,9 @@
             </div>
             <div class="col">
                 <ul>
-                    <li>@lang('footer.style')</li>
-                    @foreach(trans('footer.styles') as $style)
-                        <li><a href="#">{{ $style }}</a></li>
+                    <li>@lang('footer.category')</li>
+                    @foreach(trans('footer.categories') as $category)
+                        <li><a href="#">{{ $category }}</a></li>
                     @endforeach
                 </ul>
                 <ul>

@@ -16,10 +16,10 @@ class CreateAuctionsTable extends Migration
         Schema::create('auctions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('style');
+            $table->string('category');
             $table->string('title', 255);
             $table->text('description');
-            
+            /*$table->string('artwork_image_path');*/
             $table->integer('min_price')->unsigned();
             $table->integer('max_price')->unsigned();
             $table->date('end_date');

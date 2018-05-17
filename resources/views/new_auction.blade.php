@@ -9,7 +9,7 @@
         {!! Form::open(['route' => 'addAuction', 'files' => true]) !!}
         <div class="row">
             <div class="row-item two-third">
-                {!! Form::select('style', trans('footer.styles'), null, ['placeholder' => trans('new_auction.style'), 'class' => $errors->has('style') ? 'has-error' : '']) !!}
+                {!! Form::select('category', trans('footer.categories'), null, ['placeholder' => trans('new_auction.category'), 'class' => $errors->has('category') ? 'has-error' : '']) !!}
             </div>
         </div>
         <div class="row">

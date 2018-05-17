@@ -140,7 +140,7 @@ return [
         'account_number' => trans('register.account_number'),
         'vat_number' => trans('register.vat_number'),
         'alt_payment' => trans('register.alt_payment'),
-        'style' => trans('new_auction.style'),
+        'category' => trans('new_auction.category'),
         'title' => trans('new_auction.title'),
         'year' => trans('new_auction.year'),
         'width' => trans('new_auction.width'),
