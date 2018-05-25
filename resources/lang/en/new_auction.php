@@ -21,8 +21,8 @@ return [
     'artist_placeholder' => 'Who\'s the artist that made the artwork?',
     'photos' => 'Photos',
     'photos_texts' => [
-        'photos_text1' => 'Please upload one picture with the signature of the artwork and one picture of the artwork.',
-        'photos_text2' => 'You can upload up to 3 pictures with a maximum of 10MB each.',
+        'photos_text1' => 'Please upload one picture of your product.',
+        'photos_text2' => 'You can upload a picture with a maximum of 10MB.',
     ],
     'upload_texts' => [
         'artwork' => 'UPLOAD IMAGE OF THE ARTWORK',
