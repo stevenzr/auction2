@@ -1,7 +1,7 @@
 <?php
 
 function staticImage($filename) {
-    return "http://auction-thesis.herokuapp.com/{$filename}";
+    return "{$filename}";
 }
 
 function clean($string) {

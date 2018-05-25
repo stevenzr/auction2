@@ -19,7 +19,7 @@ class CreateAuctionsTable extends Migration
             $table->string('category');
             $table->string('title', 255);
             $table->text('description');
-            /*$table->string('artwork_image_path');*/
+            $table->string('artwork_image_path');
             $table->integer('min_price')->unsigned();
             $table->integer('max_price')->unsigned();
             $table->date('end_date');

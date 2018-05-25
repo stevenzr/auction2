@@ -31,21 +31,24 @@ class AuctionController extends Controller
         $formattedEndDate = $endDate->format('Y-m-d');
         $imageQuality = 60;
 
-       /* if($request->artwork_image->isValid() ) {
-            $artworkImagePath = 'storage/uploads/artwork_images/' . $request->artwork_image->hashName();
+        if($request->artwork_image->isValid() ) {
+         //set the name for uploaded file
+         $artwork_imageName = time() . '.' . $request->file('artwork_image')->getClientOriginalExtension();
 
-            Image::make($request->artwork_image)->save($artworkImagePath, $imageQuality);
+         $s3 = Storage::disk('s3');
+         $s3->put($artwork_imageName,file_get_contents($request->file('artwork_image')), 'public');
+         $artworkImagePath = Storage::disk('s3')->url($artwork_imageName);
         }
         else {
             return redirect()->back();
-        }*/
+        }
 
         Auction::create([
             'user_id' => Auth::id(),
             'category' => $request->category,
             'title' => $request->title,
             'description' => $request->description,
-            /*'artwork_image_path' => $artworkImagePath,*/
+            'artwork_image_path' => $artworkImagePath,
             'min_price' => $request->min_price,
             'max_price' => $request->max_price,
             'end_date' => $formattedEndDate,
