@@ -8,7 +8,7 @@
             continue;
         }
 
-        countDownDate =  countDownDate - (1000 * 60 * 60); // +1 hour timezone
+        countDownDate =  countDownDate - (7000 * 60 * 60); // +7 hour timezone
 
         let now = new Date().getTime();
         let distance = countDownDate - now;

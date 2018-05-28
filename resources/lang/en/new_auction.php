@@ -25,7 +25,7 @@ return [
         'photos_text2' => 'You can upload a picture with a maximum of 10MB.',
     ],
     'upload_texts' => [
-        'artwork' => 'UPLOAD IMAGE OF THE ARTWORK',
+        'artwork' => 'UPLOAD IMAGE OF THE PRODUCT',
 
     ],
     'pricing' => 'Pricing',
