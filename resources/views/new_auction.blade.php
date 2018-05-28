@@ -57,6 +57,12 @@
                 <span class="icons-euro"></span>
                 {!! Form::number('max_price', '', ['class' => $errors->has('max_price') ? 'has-error' : '', 'min' => 0, 'max' => 99999999]) !!}
             </div>
+            <div class="row-item third optional">
+                {!! Form::label('buyout_price', trans('new_auction.buyout_price')) !!}
+                {!! Form::label('buyout_price', trans('new_auction.optional')) !!}
+                <span class="icons-euro"></span>
+                {!! Form::number('buyout_price', '', ['class' => $errors->has('buyout_price') ? 'has-error' : '', 'min' => 0, 'max' => 99999999]) !!}
+            </div>
         </div>
         <div class="row">
             <div class="row-item third">

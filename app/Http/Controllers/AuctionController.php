@@ -52,6 +52,7 @@ class AuctionController extends Controller
             'artwork_image_path' => $artworkImagePath,
             'min_price' => $request->min_price,
             'max_price' => $request->max_price,
+            'buyout_price' => $request->buyout_price,
             'end_date' => $formattedEndDate,
         ]);
 

@@ -22,6 +22,7 @@ class CreateAuctionsTable extends Migration
             $table->string('artwork_image_path');
             $table->integer('min_price')->unsigned();
             $table->integer('max_price')->unsigned();
+            $table->integer('buyout_price')->unsigned()->nullable();
             $table->date('end_date');
             $table->string('status')->default('active');
             $table->timestamps();
