@@ -6,7 +6,7 @@
                 <img src="{{ staticImage($auction->artwork_image_path) }}" alt="{{ $auction->title }}">
             </a>
             <div class="auction-info">
-                <div class="year">{{ $auction->year }}, {{ $auction->artist }}</div>
+               
                 <div class="title">
                     <a href="{{ route('auctionDetail', ['auction' => $auction, 'auctionTitle' => clean($auction->title)]) }}">{{ $auction->title }}</a>
                 </div>
