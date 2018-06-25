@@ -20,7 +20,7 @@
                                 <ol>
                                     @foreach($auction->bids as $bid)
                                         <li class="{{ $bid->user_id == Auth::id() ? 'you' : '' }}">
-                                            € {{ formatPrice($bid->price) }}, {{ $bid->user->name }}, {{ formatDate($bid->created_at) }}
+                                            Rp. {{ formatPrice($bid->price) }}, {{ $bid->user->name }}, {{ formatDate($bid->created_at , 'desc') }}
                                         </li>
                                     @endforeach
                                 </ol>
@@ -52,12 +52,22 @@
                     <p>{{ $auction->origin }}</p>
                 </div>
                 @auth
-                    @if($auction->status == 'active')
+                    @if($auction->status == 'active'  && $auction->user_id != Auth::user()->id)
                         <div class="bid">
                             <div class="padding">
+                                <div class ="current-bids">
+                                    <h2>Current bid price</h2>
+                                    @if ($amountOfBids >0)
+                                        <p class="latestBids">
+                                            Rp.{{$latestBid}}
+                                        </p>
+                                    @else
+                                        {{$tes}}
+                                    @endif
+                                </div>
                                 <p>@lang('auction_detail.estimated_price')</p>
                                 <p class="estimated-price">
-                                    € {{ formatPrice($auction->min_price) }} - € {{ formatPrice($auction->max_price) }}
+                                    Rp. {{ formatPrice($auction->min_price) }} - Rp. {{ formatPrice($auction->max_price) }}
                                 </p>
                                 @isset($auction->buyout_price)
                                     {!! Form::open(['route' => ['auctionBuyout', 'auction' => $auction, 'auctionTitle' => clean($auction->title)]]) !!}
@@ -72,24 +82,55 @@
                             {!! Form::number('bid_price', '', ['class' => 'price-input ' . ($errors->has('bid_price') ? 'has-error' : ''), 'min' => 0, 'max' => 99999999]) !!}
                             {!! Form::submit(trans('auction_detail.bid_now'), ['class' => 'price-submit']) !!}
                             {!! Form::close() !!}
-                            <span class="add-to-watchlist-container">
-                                @if(!$isInWatchlist)
+                    @else
+                        <div v-if="bidsAreShown">
+                            @if(count($auction->bids))
+                                <ol>
+                                    <h3 class="currentbid">Current Bids</h3>
+                                    @foreach($auction->bids as $bid)
+                                        <li class="{{ $bid->user_id == Auth::id() ? 'you' : '' }}">
+                                        Rp {{ formatPrice($bid->price) }}, {{ $bid->user->name }}, {{ formatDate($bid->created_at) }}
+                                        </li>
+                                    @endforeach
+                                </ol>
+                            @else
+                                <p>@lang('auction_detail.no_bids')</p>
+                            @endif
+                        </div>
+                         <form method="POST" action="{{ route('deleteAuction', [$auction->id]) }}">
+                         {{ csrf_field() }}
+                         {{ method_field('DELETE') }}
+                          <button class="btn-delete" type="submit">Delete</button>
+                         </form>
+                    @endif
+                                @if(!$isInWatchlist && $auction->user_id != Auth::user()->id)
+                                 <span class="add-to-watchlist-container">
                                     {!! Form::open(['route' => ['addAuctionToWatchlist', 'auction' => $auction, 'auctionTitle' => clean($auction->title)]]) !!}
                                     <span class="icons-hamburger"></span>
                                     {!! Form::submit(trans('auction_detail.add_to_watchlist'), ['class' => 'add-to-watchlist']) !!}
                                     {!! Form::close() !!}
+                                @elseif($auction->user_id == Auth::user()->id)
+                                    <p> </p>
                                 @else
                                     <p>@lang('auction_detail.in_watchlist')</p>
                                 @endif
                             </span>
+
+
                         </div>
-                    @endif
+
                     @if($auction->status == 'expired')
                         <p class="ended">@lang('auction_detail.expired')</p>
                     @endif
                     @if($auction->status == 'sold')
                         <p class="ended">@lang('auction_detail.sold')</p>
                     @endif
+                    @if($auction->status == 'win')
+                         <p class="ended">@lang('auction_detail.win')</p>
+                     @endif
+                     @if($auction->status == 'lose')
+                     <p class="ended">@lang('auction_detail.lose')</p>
+                     @endif
                 @endauth
                 @guest
                     <p>@lang('auction_detail.no_auth')</p>

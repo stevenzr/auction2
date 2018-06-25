@@ -11,6 +11,7 @@ use App\Bid;
 use Carbon\Carbon;
 use Auth;
 use Image;
+use DB;
 
 class AuctionController extends Controller
 {
@@ -63,8 +64,17 @@ class AuctionController extends Controller
         $isInWatchlist = $this->getWatchlistAuctionInfo($auction->id)['isInWatchlist'];
         $amountOfBids = $auction->bids->count();
         $amountOfBidsByCurrentUser = $auction->bids->where('user_id', Auth::id())->count();
+        $tes2 = DB::table('bids')->where('user_id', Auth::id())->orderBy('created_at', 'desc')->first()->price;
 
-        return view('auction_detail', compact('auction', 'isInWatchlist', 'amountOfBids', 'amountOfBidsByCurrentUser'));
+        if ($amountOfBids >0){
+        $latestBid = DB::table('bids')->where('auction_id', '=', $auction->id)->orderBy('price', 'desc')->first()->price;
+
+
+        return view('auction_detail', compact('auction', 'isInWatchlist', 'amountOfBids', 'amountOfBidsByCurrentUser' , 'latestBid' , 'tes2'));
+        }else{
+           $tes = 'Rp. - (no one bid yet)';
+        return view('auction_detail', compact('auction', 'isInWatchlist', 'amountOfBids', 'amountOfBidsByCurrentUser', 'tes'));
+        }
     }
 
     public function auctionBuyout(Request $request, Auction $auction, $auctionTitle = null) {
@@ -86,5 +96,14 @@ class AuctionController extends Controller
         }
 
         return redirect()->back();
+    }
+     //add function deleteauction
+    public function deleteAuction(Request $request, Auction $auction){
+        if($auction->status == 'active') {
+            $auction::find($auction->id);
+            $auction->delete();
+
+        }
+        return redirect()->route('myAuctions');
     }
 }
