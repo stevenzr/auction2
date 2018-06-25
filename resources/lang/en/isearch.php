@@ -2,7 +2,7 @@
 
 return [
 
-    'isearch' => 'I search',
+    'isearch' => 'Search Products',
     'overview' => 'Overview',
 
 ];

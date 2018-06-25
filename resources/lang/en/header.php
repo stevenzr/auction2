@@ -13,7 +13,7 @@ return [
     'logout' => 'LOGOUT',
     'home' => 'HOME',
     'products' => 'PRODUCTS',
-    'isearch' => 'SEARCH PRODUCTS',
+    'isearch' => 'SEARCH',
     'myauctions' => 'MYAUCTIONS',
     'mybids' => 'MYBIDS',
     'contact' => 'CONTACT',
