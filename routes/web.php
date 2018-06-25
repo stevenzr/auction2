@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function() {
     Route::post('auction/{auction}/{auctionTitle?}/buyout', 'AuctionController@auctionBuyout')->name('auctionBuyout');
     Route::post('auction/{auction}/{auctionTitle?}/bid', 'AuctionController@addBid')->name('addBid');
     Route::post('auction/{auction}/{auctionTitle?}/addtowatchlist', 'WatchlistController@addAuctionToWatchlist')->name('addAuctionToWatchlist');
+      Route::delete('auction/{auction}/delete', 'AuctionController@deleteAuction')->name('deleteAuction'); //add delete route
 });
 
 // Auth routes

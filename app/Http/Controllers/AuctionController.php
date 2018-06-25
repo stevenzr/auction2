@@ -64,7 +64,7 @@ class AuctionController extends Controller
         $isInWatchlist = $this->getWatchlistAuctionInfo($auction->id)['isInWatchlist'];
         $amountOfBids = $auction->bids->count();
         $amountOfBidsByCurrentUser = $auction->bids->where('user_id', Auth::id())->count();
-        $tes2 = DB::table('bids')->where('user_id', Auth::id())->orderBy('created_at', 'desc')->first()->price;
+        
 
         if ($amountOfBids >0){
         $latestBid = DB::table('bids')->where('auction_id', '=', $auction->id)->orderBy('price', 'desc')->first()->price;
