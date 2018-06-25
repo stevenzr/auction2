@@ -1,19 +1,19 @@
 @extends('layouts.main')
 
-@section('title', trans('art.art'))
+@section('title', trans('products.products'))
 
 @section('content')
     <div id="art-filter">
         <div class="filter">
             <div class="filter-menu">
                 <p class="categories">
-                    <span>@lang('art.order_by')</span>
+                    <span>@lang('products.order_by')</span>
                     @for($i = 0; $i < count($orderedAuctions); $i++)
                         <a href="#" v-on:click.prevent="order('{{ $orderedAuctionTypes[$i] }}')"
-                        v-bind:class="{ active: orderBy == '{{ $orderedAuctionTypes[$i] }}' }">@lang("art.{$orderedAuctionTypes[$i]}")</a>
+                        v-bind:class="{ active: orderBy == '{{ $orderedAuctionTypes[$i] }}' }">@lang("products.{$orderedAuctionTypes[$i]}")</a>
                     @endfor
                 </p>
-                <a href="#" v-on:click.prevent="toggleFilterPane" class="advanced">@lang('art.advanced_options')<span v-bind:style="{ transform: transform}" class="icons-arrow_down"></span></a>
+                <a href="#" v-on:click.prevent="toggleFilterPane" class="advanced">@lang('products.advanced_options')<span v-bind:style="{ transform: transform}" class="icons-arrow_down"></span></a>
             </div>
             <transition name="fade">
                 <div v-if="filterPaneIsShown" class="filter-pane">

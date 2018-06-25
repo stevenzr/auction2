@@ -2,7 +2,7 @@
 # Dear {{ $userName }}
 
 {{ $auctionTitle }} has ended.
-The price of your latest bid was € {{ formatPrice($latestBidPrice)  }}.
+The price of your latest bid was Rp. {{ formatPrice($latestBidPrice)  }}.
 @if($hasHighestBid)
 You got the highest bid, congratulations on your purchase!
 @else

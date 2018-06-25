@@ -14,13 +14,13 @@ Breadcrumbs::register('auctionBuyout', function ($breadcrumbs) {
     $breadcrumbs->push(trans('thank_you.thank_you'), '#');
 });
 
-Breadcrumbs::register('art', function ($breadcrumbs) {
+Breadcrumbs::register('products', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push(trans('art.art'), route('art'));
+    $breadcrumbs->push(trans('products.products'), route('products'));
 });
 
 Breadcrumbs::register('auctionDetail', function ($breadcrumbs, $auction) {
-    $breadcrumbs->parent('art');
+    $breadcrumbs->parent('products');
     $breadcrumbs->push($auction->title, route('auctionDetail', ['auction' => $auction, 'title' => clean($auction->title)]));
 });
 
@@ -63,4 +63,9 @@ Breadcrumbs::register('myAuctions', function ($breadcrumbs) {
 Breadcrumbs::register('newAuction', function ($breadcrumbs) {
     $breadcrumbs->parent('myAuctions');
     $breadcrumbs->push(trans('new_auction.new_auction'), route('newAuction'));
+});
+
+Breadcrumbs::register('termsAndCondition', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push(trans('termsAndCondition.termsAndCondition'), route('termsAndCondition'));
 });

@@ -2,7 +2,7 @@
 
 return [
 
-    'art' => 'Art',
+    'products' => 'Products',
     'visit_auction' => 'VISIT AUCTION &gt;',
     'order_by' => 'ORDER BY:',
     'ending_soonest' => 'ending soonest',

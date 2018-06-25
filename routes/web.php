@@ -16,9 +16,10 @@ Route::get('login', 'EtcController@redirectHome');
 
 Route::get('setlocale/{locale}', 'EtcController@setLocale')->name('setLocale');
 Route::get('/', 'EtcController@home')->name('home');
-Route::get('art', 'EtcController@art')->name('art');
+Route::get('products', 'EtcController@products')->name('products');
 Route::get('isearch', 'EtcController@isearch')->name('iSearch');
 Route::get('auction/{auction}/{auctionTitle?}', 'AuctionController@auctionDetail')->name('auctionDetail');
+Route::get('termsAndCondition', 'EtcController@termsAndCondition')->name('termsAndCondition');
 
 Route::middleware(['auth'])->group(function() {
     Route::get('watchlist', 'WatchlistController@watchlist')->name('watchlist');

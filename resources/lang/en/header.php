@@ -12,7 +12,7 @@ return [
     'profile' => 'PROFILE',
     'logout' => 'LOGOUT',
     'home' => 'HOME',
-    'art' => 'ART',
+    'products' => 'PRODUCTS',
     'isearch' => 'ISEARCH',
     'myauctions' => 'MYAUCTIONS',
     'mybids' => 'MYBIDS',

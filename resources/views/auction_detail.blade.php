@@ -59,7 +59,7 @@
                                     <h2>Current bid price</h2>
                                     @if ($amountOfBids >0)
                                         <p class="latestBids">
-                                            Rp.{{$latestBid}}
+                                            Rp.{{formatPrice($latestBid)}}
                                         </p>
                                     @else
                                         {{$tes}}

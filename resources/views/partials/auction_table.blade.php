@@ -21,7 +21,7 @@
                 <a href="{{ route('auctionDetail', ['auction' => $auction, 'auctionTitle' => clean($auction->title)]) }}">{{ $auction->title }}</a>
                 <p>{{ $auction->year }} {{ $auction->artist }}</p>
             </td>
-            <td class="price">€ {{ formatPrice($auction->min_price) }}</td>
+            <td class="price">Rp. {{ formatPrice($auction->min_price) }}</td>
             <td class="end-date">{{ formatDate($auction->end_date) }}</td>
             <td class="remaining-time" @if($auction->status == 'active') data-end-date="{{ $auction->end_date }}" @endif>
                 @if($auction->status == 'expired') @lang('auction_table.expired') @endif

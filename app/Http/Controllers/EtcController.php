@@ -12,7 +12,7 @@ class EtcController extends Controller
         return view('home');
     }
 
-    public function art(Request $request) {
+    public function products(Request $request) {
         $paginate = 12;
         $endingSoonest = Auction::where('status', 'active')->orderBy('end_date')->paginate($paginate);
         $endingLatest = Auction::where('status', 'active')->orderByDesc('end_date')->paginate($paginate);
@@ -22,7 +22,7 @@ class EtcController extends Controller
         $orderedAuctions = [$endingSoonest, $endingLatest, $new, $popular];
         $orderedAuctionTypes = ['ending_soonest', 'ending_latest', 'new', 'popular'];
 
-        return view('art', compact('request', 'orderedAuctions', 'orderedAuctionTypes'));
+        return view('products', compact('request', 'orderedAuctions', 'orderedAuctionTypes'));
     }
 
     public function profile(Request $request) {
@@ -52,4 +52,9 @@ class EtcController extends Controller
     public function redirectHome(Request $request) {
         return redirect()->route('home');
     }
+
+    public function termsAndCondition(Request $request){
+
+        return view('termsAndCondition');
+        }
 }

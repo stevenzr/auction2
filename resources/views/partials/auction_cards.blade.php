@@ -6,11 +6,13 @@
                 <img src="{{ staticImage($auction->artwork_image_path) }}" alt="{{ $auction->title }}">
             </a>
             <div class="auction-info">
-               
+                <div class="year">{{ $auction->year }}</div>
                 <div class="title">
                     <a href="{{ route('auctionDetail', ['auction' => $auction, 'auctionTitle' => clean($auction->title)]) }}">{{ $auction->title }}</a>
                 </div>
-                <div class="price">€ {{ formatPrice($auction->min_price) }}</div>
+                <div class="price"> Minimum / Open price
+                    <p>Rp. {{ formatPrice($auction->min_price) }}</p>
+                </div>
                 <div class="space">
                     <span class="remaining-time" data-end-date="{{ $auction->end_date }}"></span>
                     <a href="{{ route('auctionDetail', ['auction' => $auction, 'auctionTitle' => clean($auction->title)]) }}" class="small-button">@lang('art.visit_auction')</a>
