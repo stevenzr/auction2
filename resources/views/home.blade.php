@@ -3,6 +3,7 @@
 @section('title', trans('home.home'))
 
 @section('main')
+@include('partials.errors')
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->

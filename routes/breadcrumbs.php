@@ -18,6 +18,22 @@ Breadcrumbs::register('products', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('products.products'), route('products'));
 });
+Breadcrumbs::register('toys', function ($breadcrumbs) {
+    $breadcrumbs->parent('products');
+    $breadcrumbs->push(trans('products.toys'), route('toys'));
+});
+Breadcrumbs::register('electronic', function ($breadcrumbs) {
+    $breadcrumbs->parent('products');
+    $breadcrumbs->push(trans('products.electronics'), route('electronic'));
+});
+Breadcrumbs::register('hobbies', function ($breadcrumbs) {
+    $breadcrumbs->parent('products');
+    $breadcrumbs->push(trans('products.hobbies'), route('hobbies'));
+});
+Breadcrumbs::register('accessories', function ($breadcrumbs) {
+    $breadcrumbs->parent('products');
+    $breadcrumbs->push(trans('products.accessories'), route('accessories'));
+});
 
 Breadcrumbs::register('auctionDetail', function ($breadcrumbs, $auction) {
     $breadcrumbs->parent('products');
@@ -34,11 +50,11 @@ Breadcrumbs::register('register', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('register.register'), route('register'));
 });
-
 Breadcrumbs::register('login', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('home.login'), route('login'));
 });
+
 
 
 Breadcrumbs::register('password.request', function ($breadcrumbs) {
@@ -74,27 +90,4 @@ Breadcrumbs::register('newAuction', function ($breadcrumbs) {
 Breadcrumbs::register('termsAndCondition', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push(trans('termsAndCondition.termsAndCondition'), route('termsAndCondition'));
-});
-
-Breadcrumbs::register('win_lose', function ($breadcrumbs) {
-    $breadcrumbs->parent('watchlist');
-    $breadcrumbs->push(trans('Win or Lose'), route('win_lose'));
-});
-
-Breadcrumbs::register('toys', function ($breadcrumbs) {
-    $breadcrumbs->parent('products');
-    $breadcrumbs->push(trans('porducts.toys'), route('toys'));
-});
-
-Breadcrumbs::register('electronic', function ($breadcrumbs) {
-    $breadcrumbs->parent('products');
-    $breadcrumbs->push(trans('products.electronic'), route('electronic'));
-});
-Breadcrumbs::register('hobbies', function ($breadcrumbs) {
-    $breadcrumbs->parent('products');
-    $breadcrumbs->push(trans('products.hobbies'), route('hobbies'));
-});
-Breadcrumbs::register('accessories', function ($breadcrumbs) {
-    $breadcrumbs->parent('products');
-    $breadcrumbs->push(trans('products.accessories'), route('accessories'));
 });

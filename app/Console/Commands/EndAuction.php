@@ -43,6 +43,7 @@ class EndAuction extends Command
      */
     public function handle()
     {
+
       $today = Carbon::now()->toDateString();
       $endedAuctionsUsers = [];
 
@@ -58,6 +59,7 @@ class EndAuction extends Command
         $endedAuctions = $endedAuctions->whereHas('bids')->get();
 
 
+        
         if(!$endedAuctions->isEmpty()) {
             foreach($endedAuctions as $endedAuction) {
                 $endedAuction->status = 'sold';
@@ -77,6 +79,8 @@ class EndAuction extends Command
                 $userId = $endedAuctionsUser['user_id'];
                 $auctionId = $endedAuctionsUser['auction_id'];
                 $latestBidId = $endedAuctionsUser['latest_bid_id'];
+
+
 
 
                 $userName = User::find($userId)->name;

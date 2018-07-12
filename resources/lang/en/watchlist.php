@@ -2,14 +2,12 @@
 
 return [
 
-    'watchlist' => 'My watchlist',
+    'watchlist' => 'My Watchlist',
     'delete_selected' => 'DELETE SELECTED &gt;',
     'clear_watchlist' => 'CLEAR WATCHLIST &gt;',
-    'all' => 'all',
-    'active' => 'active',
-    'win' => 'win',
-    'lose' => 'lose',
-    'expired' => 'expired',
-    'sold' => 'sold',
+    'all' => 'All',
+    'active' => 'Active',
+    'expired' => 'Expired',
+    'sold' => 'Sold',
 
 ];

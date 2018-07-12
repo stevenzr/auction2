@@ -15,6 +15,7 @@
         </div>
         <div class="row">
             <div class="row-item">
+
                 {!! Form::submit(trans('passwords.send_reset_link'), ['class' => 'big-button-reset']) !!}
             </div>
         </div>

@@ -204,18 +204,6 @@ h2 {
     padding-bottom: 20px;
     border-radius:10px;
 }
-.big-button-reset{
-    background-color: #00afef;
-    text-align: center;
-    width: auto;
-    padding: 15px;
-    color: #fff;
-    display: inline-block;
-    font-size: 17px;
-    margin:auto;
-    padding-bottom: 20px;
-    border-radius:10px;
-}
 .logo, .logo-top, .logo-bottom {
     position: absolute;
     z-index: 10;
@@ -1119,17 +1107,10 @@ ul.breadcrumb{
 
 input.big-button {
     margin-bottom: 20px;
-    margin-top: 20px;
 }
-
-input.big-button-reset {
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
 .loginsubmit input[type="submit"] {
     width: 80%;
-    height: 40px;
+    height: 30px;
     background-color: #00afef;
     color: white;
     font-weight: bold;

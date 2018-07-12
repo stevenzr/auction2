@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="auction-detail">
-
         <h1>{{ $auction->title }}</h1>
         @include('partials.errors')
         @if($auction->status == 'active')
@@ -19,7 +18,7 @@
                         <div v-if="bidsAreShown">
                             @if(count($auction->bids))
                                 <ol>
-                                    @foreach($auction->bids->sortByDesc('created_at')->slice(0,5) as $bid)
+                                    @foreach($auction->bids as $bid)
                                         <li class="{{ $bid->user_id == Auth::id() ? 'you' : '' }}">
                                             Rp. {{ formatPrice($bid->price) }}, {{ $bid->user->name }}, {{ formatDate($bid->created_at , 'desc') }}
                                         </li>
@@ -63,7 +62,7 @@
                                             Rp.{{formatPrice($latestBid)}}
                                         </p>
                                     @else
-                                        {{$current_status}}
+                                        {{$tes}}
                                     @endif
                                 </div>
                                 <p>@lang('auction_detail.estimated_price')</p>
@@ -98,14 +97,11 @@
                                 <p>@lang('auction_detail.no_bids')</p>
                             @endif
                         </div>
-                        @if($auction->status == 'active')
                          <form method="POST" action="{{ route('deleteAuction', [$auction->id]) }}">
                          {{ csrf_field() }}
                          {{ method_field('DELETE') }}
                           <button class="btn-delete" type="submit">Delete</button>
                          </form>
-                         @endif
-
                     @endif
                                 @if(!$isInWatchlist && $auction->user_id != Auth::user()->id)
                                  <span class="add-to-watchlist-container">
@@ -119,6 +115,8 @@
                                     <p>@lang('auction_detail.in_watchlist')</p>
                                 @endif
                             </span>
+
+
                         </div>
 
                     @if($auction->status == 'expired')
@@ -127,6 +125,12 @@
                     @if($auction->status == 'sold')
                         <p class="ended">@lang('auction_detail.sold')</p>
                     @endif
+                    @if($auction->status == 'win')
+                         <p class="ended">@lang('auction_detail.win')</p>
+                     @endif
+                     @if($auction->status == 'lose')
+                     <p class="ended">@lang('auction_detail.lose')</p>
+                     @endif
                 @endauth
                 @guest
                     <p>@lang('auction_detail.no_auth')</p>

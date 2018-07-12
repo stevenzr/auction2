@@ -14,4 +14,3 @@
     @include('partials.auction_table', ['auctions' => $soldAuctions])
     @include('partials.scripts.remaining_time')
 @endsection
-

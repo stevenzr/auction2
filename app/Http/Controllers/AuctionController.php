@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\AddAuction;
 use App\Http\Requests\AddBid;
 use App\Auction;
@@ -29,24 +28,22 @@ class AuctionController extends Controller
     }
 
     public function addAuction(AddAuction $request) {
-      $optionalImagePath = null;
-      $endDate = Carbon::createFromFormat('d/m/y', $request->end_date);
-      $formattedEndDate = $endDate->format('Y-m-d');
-      $imageQuality = 60;
+        $optionalImagePath = null;
+        $endDate = Carbon::createFromFormat('d/m/y', $request->end_date);
+        $formattedEndDate = $endDate->format('Y-m-d');
+        $imageQuality = 60;
 
-      if($request->artwork_image->isValid() ) {
-          //set the name for uploaded file
-        $artwork_imageName = time() . '.' . $request->file('artwork_image')->getClientOriginalExtension();
+        if($request->artwork_image->isValid() ) {
+         //set the name for uploaded file
+         $artwork_imageName = time() . '.' . $request->file('artwork_image')->getClientOriginalExtension();
 
-        $s3 = Storage::disk('s3');
-        $s3->put($artwork_imageName,file_get_contents($request->file('artwork_image')), 'public');
-            $artworkImagePath = Storage::disk('s3')->url($artwork_imageName);
-
-
-      }
-      else {
-        return redirect()->back();
-      }
+         $s3 = Storage::disk('s3');
+         $s3->put($artwork_imageName,file_get_contents($request->file('artwork_image')), 'public');
+         $artworkImagePath = Storage::disk('s3')->url($artwork_imageName);
+        }
+        else {
+            return redirect()->back();
+        }
 
         Auction::create([
             'user_id' => Auth::id(),
@@ -54,9 +51,9 @@ class AuctionController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'artwork_image_path' => $artworkImagePath,
-            'buyout_price' => $request->buyout_price,
             'min_price' => $request->min_price,
             'max_price' => $request->max_price,
+            'buyout_price' => $request->buyout_price,
             'end_date' => $formattedEndDate,
         ]);
 
@@ -67,16 +64,16 @@ class AuctionController extends Controller
         $isInWatchlist = $this->getWatchlistAuctionInfo($auction->id)['isInWatchlist'];
         $amountOfBids = $auction->bids->count();
         $amountOfBidsByCurrentUser = $auction->bids->where('user_id', Auth::id())->count();
+        
 
         if ($amountOfBids >0){
-            $latestBid = DB::table('bids')->where('auction_id', '=', $auction->id)->orderBy('price', 'desc')->first()->price;
+        $latestBid = DB::table('bids')->where('auction_id', '=', $auction->id)->orderBy('price', 'desc')->first()->price;
 
 
-            return view('auction_detail', compact('auction', 'isInWatchlist', 'amountOfBids', 'amountOfBidsByCurrentUser' , 'latestBid'));
-
+        return view('auction_detail', compact('auction', 'isInWatchlist', 'amountOfBids', 'amountOfBidsByCurrentUser' , 'latestBid' , 'tes2'));
         }else{
-           $current_status = 'Rp. - (no one bid yet)';
-           return view('auction_detail', compact('auction', 'isInWatchlist', 'amountOfBids', 'amountOfBidsByCurrentUser', 'current_status'));
+           $tes = 'Rp. - (no one bid yet)';
+        return view('auction_detail', compact('auction', 'isInWatchlist', 'amountOfBids', 'amountOfBidsByCurrentUser', 'tes'));
         }
     }
 
@@ -100,8 +97,7 @@ class AuctionController extends Controller
 
         return redirect()->back();
     }
-
-    //add function deleteauction
+     //add function deleteauction
     public function deleteAuction(Request $request, Auction $auction){
         if($auction->status == 'active') {
             $auction::find($auction->id);
@@ -110,6 +106,4 @@ class AuctionController extends Controller
         }
         return redirect()->route('myAuctions');
     }
-
-
 }

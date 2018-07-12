@@ -71,7 +71,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'address' => $data['address'],
             'phone_number' => $data['phone_number'],
-            
+
         ]);
 
          Mail::to($data['email'])->send(new WelcomeMail($user));

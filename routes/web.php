@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('home', 'EtcController@redirectHome');
 Route::get('login', 'EtcController@login')->name('login');
 
@@ -26,10 +25,7 @@ Route::get('accessories','EtcController@accessories')->name('accessories');
 Route::get('auction/{auction}/{auctionTitle?}', 'AuctionController@auctionDetail')->name('auctionDetail');
 Route::get('termsAndCondition', 'EtcController@termsAndCondition')->name('termsAndCondition');
 
-
 Route::middleware(['auth'])->group(function() {
-    Route::get('win_lose', 'EtcController@win_lose')->name('win_lose');
-    Route::get('auction/{auction}/bids', 'AuctionController@auctionTableCount')->name('auctionTableCount');
     Route::get('watchlist', 'WatchlistController@watchlist')->name('watchlist');
     Route::delete('watchlist/deleteselected', 'WatchlistController@deleteSelectedWatchlistAuctions')->name('deleteSelectedWatchlistAuctions');
     Route::delete('watchlist/clear', 'WatchlistController@clearWatchlist')->name('clearWatchlist');
@@ -40,9 +36,7 @@ Route::middleware(['auth'])->group(function() {
     Route::post('auction/{auction}/{auctionTitle?}/buyout', 'AuctionController@auctionBuyout')->name('auctionBuyout');
     Route::post('auction/{auction}/{auctionTitle?}/bid', 'AuctionController@addBid')->name('addBid');
     Route::post('auction/{auction}/{auctionTitle?}/addtowatchlist', 'WatchlistController@addAuctionToWatchlist')->name('addAuctionToWatchlist');
-    Route::delete('auction/{auction}/delete', 'AuctionController@deleteAuction')->name('deleteAuction'); //add delete route
-
-
+      Route::delete('auction/{auction}/delete', 'AuctionController@deleteAuction')->name('deleteAuction'); //add delete route
 });
 
 // Auth routes

@@ -69,7 +69,12 @@
                 {!! Form::label('end_date', trans('new_auction.end_date')) !!}
                 {!! Form::text('end_date', '', ['placeholder' => trans('new_auction.end_date_placeholder'), 'class' => $errors->has('end_date') ? 'has-error' : '', 'maxlength' => 8]) !!}
             </div>
-
+            <div class="row-item attention">
+                {!! Form::label('attention', trans('new_auction.attention')) !!}
+                @foreach(trans('new_auction.attention_texts') as $attention_text)
+                    <p>{{ $attention_text }}</p>
+                @endforeach
+            </div>
         </div>
         @include('partials.agree_tac')
         <div class="row1">

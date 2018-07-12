@@ -7,7 +7,7 @@ return [
     'explanations' => [
         'sign_up' => 'Sign up',
         'make_deals' => 'Make deals',
-        'everyone_happy' => 'Everyone happy!',
+        'everyone_happy' => 'Everyone happy',
     ],
     'most_popular' => 'Most popular this week',
     'new_auction' => 'New Auction',

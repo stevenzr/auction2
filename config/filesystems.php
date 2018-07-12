@@ -62,6 +62,7 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL' , 'https://s3.ap-southeast-1.amazonaws.com/auction-thesis2/'),
+
         ],
 
     ],

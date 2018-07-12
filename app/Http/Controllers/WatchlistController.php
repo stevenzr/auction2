@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Auction;
 use App\WatchlistItem;
 use Auth;
-use Carbon\Carbon;
-use DB;
 
 class WatchlistController extends Controller
 {
@@ -23,17 +21,10 @@ class WatchlistController extends Controller
         $expiredWatchlistAuctions = $allWatchlistAuctions->where('status', 'expired');
         $soldWatchlistAuctions = $allWatchlistAuctions->where('status', 'sold');
 
-
         $watchlistAuctions = [$allWatchlistAuctions, $activeWatchlistAuctions, $expiredWatchlistAuctions, $soldWatchlistAuctions];
         $watchlistCategories = ['all', 'active', 'expired', 'sold'];
 
-
-
-         $endedAuctions = $allWatchlistAuctions->where('id', '1');
-
-
-
-        return view('watchlist', compact('watchlistAuctions', 'watchlistCategories', 'endedAuctions'));
+        return view('watchlist', compact('watchlistAuctions', 'watchlistCategories'));
     }
 
     public function deleteSelectedWatchlistAuctions(Request $request) {
@@ -56,16 +47,14 @@ class WatchlistController extends Controller
 
     public function addAuctionToWatchlist(Request $request, Auction $auction, $auctionTitle = null) {
         $isInWatchlist = $this->getWatchlistAuctionInfo($auction->id)['isInWatchlist'];
-    do{
+
         if($auction->status == 'active' && !$isInWatchlist) {
             WatchlistItem::create([
                 'user_id' => Auth::id(),
                 'auction_id' => $auction->id,
             ]);
         }
-    }while('users.id'== $this->getWatchlistAuctionInfo(Auth::id()));
 
         return redirect()->back();
     }
-
 }
